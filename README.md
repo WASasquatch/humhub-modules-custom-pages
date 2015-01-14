@@ -8,6 +8,10 @@ __Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages>
 __Author:__ Jordan Thompson, Luke
 __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
+### Installation
+
+- Simply drop the module as "custom_pages" into your /protected/modules/ folder
+- Activate, and configure the module.
 
 For more  informations visit:
-<https://github.com/humhub/humhub-modules-custom-pages>
+<https://github.com/WASasquatch/humhub-modules-custom-pages>
