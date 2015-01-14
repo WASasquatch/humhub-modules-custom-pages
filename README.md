@@ -14,4 +14,4 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 - Activate, and configure the module.
 
 For more  informations visit:
-<https://github.com/WASasquatch/humhub-modules-custom-pages>
+<https://github.com/WASasquatch/humhub-modules-custom-pages-extended>
