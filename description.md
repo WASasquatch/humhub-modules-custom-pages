@@ -3,16 +3,16 @@ Within the Custom Pages module, administrators can quickly and easily add additi
 **Features:**
 -
 - Add menu entries to the top navigation or account menu
-- Create new pages with your own content (HTML or Markdown)
+- Create new pages with your own content (HTML, PHP or Markdown)
 - Integrate iFrames to display external content
 - Add simple outgoing links
 
 
 **Source Code:**    
-<https://github.com/humhub/humhub-modules-custom-pages>
+<https://github.com/WASasquatch/humhub-modules-custom-pages>
 
 **Changelog:**  
-<https://github.com/humhub/humhub-modules-custom-pages/commits/master>
+<https://github.com/WASasquatch/humhub-modules-custom-pages/commits/master>
 
 **Bugtracker:**  
-<https://github.com/humhub/humhub-modules-custom-pages/issues>
+<https://github.com/WASasquatch/humhub-modules-custom-pages/issues>
