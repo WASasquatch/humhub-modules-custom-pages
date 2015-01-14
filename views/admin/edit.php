@@ -23,7 +23,7 @@
 
         <div class="form-group">
             <?php echo $form->labelEx($page, 'type'); ?>
-            <?php echo $form->dropdownList($page, 'type', CustomPage::getPageTypes(), array('id' => 'page_type', 'class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content'))); ?>
+            <?php echo $form->dropdownList($page, 'type', CustomPage::getPageTypes(), array('id' => 'page_type', 'class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content Type'))); ?>
         </div>
 
         <div class="form-group" id="content_field">

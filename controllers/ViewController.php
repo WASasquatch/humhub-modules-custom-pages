@@ -21,7 +21,7 @@
 /**
  * Description of ViewController
  *
- * @author luke
+ * @author luke, jordan
  */
 class ViewController extends Controller
 {
@@ -57,6 +57,7 @@ class ViewController extends Controller
     {
 
         $page = CustomPage::model()->findByPk(Yii::app()->request->getParam('id'));
+		$user = Yii::app()->user;
 
         if ($page === null) {
             throw new CHttpException('404', 'Could not find requested page');
@@ -74,6 +75,8 @@ class ViewController extends Controller
             $this->render('html', array('html' => $page->content));
         } elseif ($page->type == CustomPage::TYPE_IFRAME) {
             $this->render('iframe', array('url' => $page->content, 'navigationClass' => $page->navigation_class));
+        } elseif ($page->type == CustomPage::TYPE_PHP) {
+            $this->render('php', array('php' => $page->content, 'user' => $user));
         } elseif ($page->type == CustomPage::TYPE_LINK) {
             $this->redirect($page->content);
         } elseif ($page->type == CustomPage::TYPE_MARKDOWN) {

@@ -24,6 +24,7 @@ class CustomPage extends HActiveRecord
     const TYPE_HTML = '2';
     const TYPE_IFRAME = '3';
     const TYPE_MARKDOWN = '4';
+	const TYPE_PHP = '5';
 
     /**
      * Returns the static model of the specified AR class.
@@ -121,6 +122,7 @@ class CustomPage extends HActiveRecord
             self::TYPE_HTML => Yii::t('CustomPagesModule.base', 'HTML'),
             self::TYPE_MARKDOWN => Yii::t('CustomPagesModule.base', 'MarkDown'),
             self::TYPE_IFRAME => Yii::t('CustomPagesModule.base', 'IFrame'),
+            self::TYPE_PHP => Yii::t('CustomPagesModule.base', 'PHP'),
         );
     }
 

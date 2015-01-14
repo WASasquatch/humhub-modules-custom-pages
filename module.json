@@ -1,10 +1,30 @@
 {
     "id": "custom_pages",
     "name": "Custom Pages",
-    "description": "Allows admins to add custom pages (html or markdown) or external links to various navigations (e.g. top navigation, account menu).",
-    "keywords": ["pages", "custom", "iframe", "markdown", "link", "navigation"],
-    "version": "0.1.0",
+    "description": "Allows admins to add custom pages (html, php, or markdown), iframes or external links to various navigations (e.g. top navigation, account menu).",
+    "keywords": ["pages", "custom", "iframe", "markdown", "link", "navigation", "php"],
+    "version": "0.1.2",
+    "authors": [
+        {
+            "name": "Lucas Bartholemy"
+        },
+        {
+            "name": "Andreas Strobel"
+        },
+		{
+			"name": "Jordan Thompson"
+		}
+    ],
+    "homepage": "https://github.com/humhub/humhub-modules-custom-pages",
+    "time": "2014-11-17",
     "humhub": {
         "minVersion": "0.8"
-    }
+    },
+    "screenshots": ["assets/screen1.jpg"],
+    "docs": [
+        {
+            "name": "Description",
+            "file": "description.md"
+        }
+    ]
 }

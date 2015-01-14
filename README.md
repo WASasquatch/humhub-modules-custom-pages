@@ -1,12 +1,12 @@
-Custom Pages
+Custom Pages Extended
 ============
 
-Allows admins to add custom pages (html or markdown) or external links to various navigations (e.g. top navigation, account menu).
+Allows admins to add custom pages (html, php, or markdown) or external links to various navigations (e.g. top navigation, account menu).
 
 __Status:__ alpha
-__Module website:__ <https://github.com/humhub/humhub-modules-custom-pages>
-__Author:__ luke
-__Author website:__ [humhub.org](http://humhub.org)
+__Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages>
+__Author:__ Jordan Thompson, Luke
+__Author website:__ [community.humhub.org](http://community.humhub.org)
 
 
 For more  informations visit:

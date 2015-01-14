@@ -32,7 +32,7 @@ class CustomPagesEvents
             'label' => Yii::t('CustomPagesModule.base', 'Custom Pages'),
             'url' => Yii::app()->createUrl('//custom_pages/admin'),
             'group' => 'manage',
-            'icon' => '<i class="fa fa-file-o"></i>',
+            'icon' => '<i class="fa fa-file-code-o"></i>',
             'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'admin'),
             'sortOrder' => 300,
         ));
