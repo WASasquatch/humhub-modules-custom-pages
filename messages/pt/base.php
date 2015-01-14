@@ -20,6 +20,7 @@ return array (
   'Create new Page' => '',
   'Custom Pages' => '',
   'HTML' => '',
+  'PHP' => '',
   'IFrame' => '',
   'Link' => '',
   'MarkDown' => '',
