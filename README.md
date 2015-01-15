@@ -15,5 +15,6 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
 For more  informations visit:
 <https://github.com/WASasquatch/humhub-modules-custom-pages-extended>
+
 Based on:
 <http://github.com/humhub/humhub-modules-custom-pages>
