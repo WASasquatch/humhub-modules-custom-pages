@@ -8,6 +8,12 @@ __Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages>
 __Author:__ Jordan Thompson, Luke
 __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
+### New Features in Extended Version
+
+- **PHP** Pages for Inline-Module Creation!
+- **Active User Model** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
+- **More Soon** ...
+
 ### Installation
 
 - Simply drop the module as "custom_pages" into your /protected/modules/ folder
