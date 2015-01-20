@@ -19,6 +19,10 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 - Simply drop the module as "custom_pages" into your /protected/modules/ folder
 - Activate, and configure the module.
 
+### PHP Page Usage
+
+The PHP pages run off the eval() functioning, meaning all supplied imput needs to be already in PHP Mode. Do not start, or end with `<?php ... ?>`, instead write as if already in PHP Mode. 
+
 For more  informations visit:
 <https://github.com/WASasquatch/humhub-modules-custom-pages-extended>
 
