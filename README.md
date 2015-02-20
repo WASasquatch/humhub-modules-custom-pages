@@ -21,11 +21,8 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
 ### PHP Page Usage
 
-- The PHP pages run off the eval() functioning, meaning all supplied imput needs to be already in PHP Mode. Do not start, or end with `<?php ... ?>`, instead write as if already in PHP Mode. 
+- The PHP pages run off the eval() functioning, meaning all supplied input needs to be already in PHP Mode. Do not start, or end with `<?php ... ?>`, instead write as if already in PHP Mode. 
 - You can use the object var `$user` to access user information such as the user display name `$user->displayName`
 
-For more  informations visit:
-<https://github.com/WASasquatch/humhub-modules-custom-pages-extended>
-
-Based on:
-<http://github.com/humhub/humhub-modules-custom-pages>
+For more  informations visit parent module:
+<https://github.com/humhub/humhub-modules-custom>
