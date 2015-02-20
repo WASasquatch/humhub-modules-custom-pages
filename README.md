@@ -25,4 +25,4 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 - You can use the object var `$user` to access user information such as the user display name `$user->displayName`
 
 For more  information visit parent module:
-<https://github.com/humhub/humhub-modules-custom>
+<https://github.com/humhub/humhub-modules-custom-pages>
