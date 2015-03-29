@@ -19,7 +19,7 @@ class HStats
     /**
      * Return a count or list or members by type or total
      * 
-     * @return int | array
+     * @return int | obj
      */
     public function memberStats($act = 'total', $list = false, $limit = 10)
     {
@@ -47,7 +47,7 @@ class HStats
     /**
      * Return a count of new spaces, and optionally a list
      * 
-     * @return int | array
+     * @return int | obj
      */
 	public function newSpaces($list = false, $limit = 10)
 	{
@@ -117,7 +117,7 @@ class HStats
     /**
      * Return a user based on id
      * 
-     * @return object
+     * @return obj
      */
 	public static function loadUser($id) 
 	{
