@@ -4,6 +4,7 @@ Within the Custom Pages module, administrators can quickly and easily add additi
 -
 - Add menu entries to the top navigation or account menu
 - Create new pages with your own content (HTML, PHP or Markdown)
+- Create Inline-Modules with PHP Page Types ([Example Inline-Module HStats](docs/example.md))
 - Integrate iFrames to display external content
 - Add simple outgoing links
 
