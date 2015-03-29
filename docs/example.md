@@ -7,7 +7,7 @@ This example shows how you can create a class and utilize it to create inline-mo
 
 ```php
 /* *
- * Inline Module Example
+ * Inline Module Example HStats 
  * @author Jordan Thompson
  *
  * You can extend Yii/HumHub classes or create your own.
