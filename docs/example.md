@@ -7,7 +7,6 @@ This example shows how you can create a class and utilize it to create inline-mo
 
 <img src="http://i.imgur.com/hKwjATO.png" ?>
 
-```php
 /* *
  * Inline Module Example HStats 
  * @author Jordan Thompson
@@ -17,7 +16,7 @@ This example shows how you can create a class and utilize it to create inline-mo
  * */
 class HStats
 {
-    
+
     /**
      * Return a count or list or members by type or total
      * 
@@ -45,7 +44,7 @@ class HStats
             break;
         }
     }
-    
+
     /**
      * Return a count of new spaces, and optionally a list
      * 
@@ -67,7 +66,7 @@ class HStats
         }
         return $count;
     }
-    
+
     /**
      * Return space count statistics by type or all
      * 
@@ -94,7 +93,7 @@ class HStats
         }
         return false;
     }
-    
+
     /**
      * Return group count statistics by type or all
      * 
@@ -115,7 +114,7 @@ class HStats
         }
         return false;
     }
-    
+
     /**
      * Return a user based on id
      * 
@@ -125,7 +124,7 @@ class HStats
     {
         return User::model()->findByPk($id);
     }
-    
+
 
     /**
      * Checks if the user is a administrator
@@ -185,17 +184,16 @@ foreach ($online[1] as $u) {
     $u = $stats->loadUser($u->user_id);
     $name = $u->displayName;
     if ($stats->is_admin($u->id)) {
-        echo '<a href="<?php echo $member->getProfileUrl(); ?>"> 
+        echo '<a href="' . $member->getProfileUrl(); . '"> 
                     <img src="' . $u->getProfileImage()->getUrl() . '" class="media-object tt space-widget-member-image img-rounded pull-left" 
                     style="width: 40px; height: 40px; border: 2px solid #FF8989; margin-right: 4px;" alt="40x40" data-src="holder.js/40x40" data-toggle="tooltip" data-placement="top" title="" 
                     data-original-title="<strong>' . $u->displayName . '</strong><br />' . $u->profile->title . '" />';
     } else {
-        echo '<a href="<?php echo $member->getProfileUrl(); ?>"> 
+        echo '<a href="' . $member->getProfileUrl(); , '"> 
                     <img src="' . $u->getProfileImage()->getUrl() . '" class="media-object tt space-widget-member-image img-rounded pull-left" 
                     style="width: 40px; height: 40px; border: 2px solid #EDEDED; margin-right: 4px;" alt="40x40" data-src="holder.js/40x40" data-toggle="tooltip" data-placement="top" title="" 
                     data-original-title="<strong>' . $u->displayName . '</strong><br />' . $u->profile->title . '" />';
     }
 }
 echo '</p></div></div>';
-
 ```
