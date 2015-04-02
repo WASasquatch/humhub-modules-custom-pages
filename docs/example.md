@@ -185,12 +185,12 @@ foreach ($online[1] as $u) {
     $u = $stats->loadUser($u->user_id);
     $name = $u->displayName;
     if ($stats->is_admin($u->id)) {
-        echo '<a href="' . $member->getProfileUrl(); . '"> 
+        echo '<a href="' . $member->getProfileUrl() . '"> 
                     <img src="' . $u->getProfileImage()->getUrl() . '" class="media-object tt space-widget-member-image img-rounded pull-left" 
                     style="width: 40px; height: 40px; border: 2px solid #FF8989; margin-right: 4px;" alt="40x40" data-src="holder.js/40x40" data-toggle="tooltip" data-placement="top" title="" 
                     data-original-title="<strong>' . $u->displayName . '</strong><br />' . $u->profile->title . '" />';
     } else {
-        echo '<a href="' . $member->getProfileUrl(); , '"> 
+        echo '<a href="' . $member->getProfileUrl() , '"> 
                     <img src="' . $u->getProfileImage()->getUrl() . '" class="media-object tt space-widget-member-image img-rounded pull-left" 
                     style="width: 40px; height: 40px; border: 2px solid #EDEDED; margin-right: 4px;" alt="40x40" data-src="holder.js/40x40" data-toggle="tooltip" data-placement="top" title="" 
                     data-original-title="<strong>' . $u->displayName . '</strong><br />' . $u->profile->title . '" />';
