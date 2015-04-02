@@ -7,6 +7,7 @@ This example shows how you can create a class and utilize it to create inline-mo
 
 <img src="http://i.imgur.com/hKwjATO.png" ?>
 
+```php
 /* *
  * Inline Module Example HStats 
  * @author Jordan Thompson
