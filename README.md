@@ -15,10 +15,7 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 - **Active User Model** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
 - **More Soon** ...
 
-### Installation
-
-- Simply drop the module as "custom_pages" into your /protected/modules/ folder
-- Activate, and configure the module.
+### [Installation](installation.md)
 
 ### PHP Page Usage
 
