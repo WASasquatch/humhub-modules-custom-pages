@@ -45,12 +45,9 @@ class ViewController extends Controller
     {
         return array(
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'users' => array('@'),
-            ),
-            array('deny', // deny all users
                 'users' => array('*'),
             ),
-        );
+		);
     }
 
     public function actionIndex()
@@ -65,6 +62,10 @@ class ViewController extends Controller
 
         if  ($page->admin_only == 1 && !Yii::app()->user->isAdmin()) {
             throw new CHttpException(403, 'Access denied!');
+        }
+		
+        if ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) {
+              throw new CHttpException(403, 'Registered members only!');
         }
 
         if ($page->navigation_class == CustomPage::NAV_CLASS_ACCOUNTNAV) {
@@ -82,7 +83,7 @@ class ViewController extends Controller
         } elseif ($page->type == CustomPage::TYPE_MARKDOWN) {
             $this->render('markdown', array('md' => $page->content, 'navigationClass' => $page->navigation_class));
         } else {
-            throw new CHttpException('500', 'Invalid page type!');
+            throw new CHttpException(500, 'Invalid page type!');
         }
     }
 
