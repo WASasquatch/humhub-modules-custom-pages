@@ -70,6 +70,14 @@
                 </label>
             </div>
         </div>        
+		
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <?php echo $form->checkBox($page, 'visibility'); ?> <?php echo $page->getAttributeLabel('visibility'); ?>
+                </label>
+            </div>
+        </div>        
 
         <?php echo CHtml::submitButton(Yii::t('CustomPages.views_admin_edit', 'Save'), array('class' => 'btn btn-primary')); ?>
 
