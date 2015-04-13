@@ -12,6 +12,7 @@ class m140930_045035_initial extends EDbMigration
             'icon' => 'varchar(100)',
             'content' => 'TEXT',
             'sort_order' => 'int(11)',
+			'visibility' => 'int(1)',
             'navigation_class' => 'varchar(255) NOT NULL',
                 ), '');
     }
