@@ -44,8 +44,8 @@ class CustomPagesEvents
     {
         foreach (CustomPage::model()->findAllByAttributes(array('navigation_class' => CustomPage::NAV_CLASS_TOPNAV)) as $page) {
 
-            // Admin only
-            if ($page->admin_only == 1 && !Yii::app()->user->isAdmin()) {
+            // Admin only or not public page
+            if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
                 continue;
             }
 
@@ -63,8 +63,9 @@ class CustomPagesEvents
     public static function onAccountMenuInit($event)
     {
         foreach (CustomPage::model()->findAllByAttributes(array('navigation_class' => CustomPage::NAV_CLASS_ACCOUNTNAV)) as $page) {
-            // Admin only
-            if ($page->admin_only == 1 && !Yii::app()->user->isAdmin()) {
+
+            // Admin only or not public page
+            if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
                 continue;
             }
 
