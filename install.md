@@ -6,4 +6,4 @@
 
 ### Updating
 
-- If you are updating from 0.1.2 please run `php path/to/protected/yiic migrate new --module=core`
+- If you are updating from 0.1.2 please run `php path/to/protected/yiic migrate new --module=custom_pages`
