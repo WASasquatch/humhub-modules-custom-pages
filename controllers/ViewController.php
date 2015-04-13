@@ -44,7 +44,7 @@ class ViewController extends Controller
     public function accessRules()
     {
         return array(
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+            array('allow', // due to the nature of this module, all members should be allowed and sorted within
                 'users' => array('*'),
             ),
 		);
