@@ -10,6 +10,7 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
 ### New Features in Extended Version
 
+- **Guest** View Support
 - **PHP** Pages for Inline-Module Creation!
 - **Active User Model** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
 - **More Soon** ...
