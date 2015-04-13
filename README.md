@@ -15,7 +15,7 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 - **Active User Model** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
 - **More Soon** ...
 
-### [Installation](installation.md)
+### [Installation](install.md)
 
 ### PHP Page Usage
 
