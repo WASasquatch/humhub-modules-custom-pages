@@ -53,7 +53,7 @@ class CustomPage extends HActiveRecord
         // will receive user inputs.
         return array(
             array('type, title, navigation_class', 'required'),
-            array('type, sort_order, admin_only', 'numerical', 'integerOnly' => true),
+            array('type, sort_order, admin_only, visibility', 'numerical', 'integerOnly' => true),
             array('title, navigation_class', 'length', 'max' => 255),
             array('icon', 'length', 'max' => 100),
             array('content, url', 'safe'),
@@ -85,6 +85,7 @@ class CustomPage extends HActiveRecord
             'url' => 'URL',
             'sort_order' => 'Sort Order',
             'admin_only' => 'Only visible for admins',
+			'visibility' => 'Public to guests',
             'navigation_class' => 'Navigation',
         );
     }
