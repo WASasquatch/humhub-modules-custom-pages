@@ -20,7 +20,7 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 - Simply drop the module as **custom_pages** into your `/protected/modules/` folder
 - Activate the module
 
-### PHP Page Usage
+### PHP Page / Widget Usage
 
 - The PHP pages run off the eval() functioning, meaning all supplied input needs to be already in PHP Mode. Do not start, or end with `<?php ... ?>`, instead write as if already in PHP Mode. 
 - You can use the object var `$user` to access user information such as the user display name `$user->displayName`
