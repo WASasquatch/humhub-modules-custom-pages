@@ -69,6 +69,8 @@ class AdminController extends Controller
             $page = new CustomPage;
         }
 
+        $page->markdown = $page->content;
+
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'page-edit-form') {
             echo CActiveForm::validate($page);
             Yii::app()->end();

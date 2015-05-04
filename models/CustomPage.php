@@ -17,14 +17,24 @@ class CustomPage extends HActiveRecord
 {
 
     public $url;
+    public $markdown;
+    public $widget_class;
 
+    // Navigations
     const NAV_CLASS_TOPNAV = 'TopMenuWidget';
     const NAV_CLASS_ACCOUNTNAV = 'AccountMenuWidget';
+    // Widget Targets
+    const WIDGET_DASHBOARD = 'DashboardSidebarWidget';
+    const WIDGET_DIRECTORY = 'DirectorySidebarWidget';
+    const WIDGET_SPACE = 'SpaceSidebarWidget';
+    // Page Types
     const TYPE_LINK = '1';
     const TYPE_HTML = '2';
     const TYPE_IFRAME = '3';
     const TYPE_MARKDOWN = '4';
 	const TYPE_PHP = '5';
+    const TYPE_WIDGET = '6';
+
 
     /**
      * Returns the static model of the specified AR class.
@@ -52,9 +62,9 @@ class CustomPage extends HActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('type, title, navigation_class', 'required'),
+            array('type, title, widget_class, navigation_class', 'required'),
             array('type, sort_order, admin_only, visibility', 'numerical', 'integerOnly' => true),
-            array('title, navigation_class', 'length', 'max' => 255),
+            array('title, widget_class, navigation_class', 'length', 'max' => 255),
             array('icon', 'length', 'max' => 100),
             array('content, url', 'safe'),
         );
@@ -87,6 +97,7 @@ class CustomPage extends HActiveRecord
             'admin_only' => 'Only visible for admins',
 			'visibility' => 'Public to guests',
             'navigation_class' => 'Navigation',
+            'widget_class' => 'Widget Type',
         );
     }
 
@@ -95,7 +106,15 @@ class CustomPage extends HActiveRecord
         if ($this->type == self::TYPE_IFRAME || $this->type == self::TYPE_LINK) {
             $this->content = $this->url;
         }
-
+        if ($this->type == self::TYPE_MARKDOWN) {
+            $this->content = $this->markdown;
+        }
+        if ($this->type == self::TYPE_WIDGET) {
+            $this->navigation_class = 'null';
+        } else {
+            $this->widget_class = 'null';
+        }
+        
         return parent::beforeSave();
     }
 
@@ -104,7 +123,10 @@ class CustomPage extends HActiveRecord
         if ($this->type == self::TYPE_IFRAME || $this->type == self::TYPE_LINK) {
             $this->url = $this->content;
         }
-
+        if ($this->type == self::TYPE_MARKDOWN) {
+            $this->markdown = $this->content;
+        }
+        
         return parent::afterFind();
     }
 
@@ -113,6 +135,15 @@ class CustomPage extends HActiveRecord
         return array(
             self::NAV_CLASS_TOPNAV => Yii::t('CustomPagesModule.base', 'Top Navigation'),
             self::NAV_CLASS_ACCOUNTNAV => Yii::t('CustomPagesModule.base', 'User Account Menu (Settings)'),
+        );
+    }
+    
+    public static function getWidgetClasses()
+    {
+        return array(
+            self::WIDGET_DASHBOARD => Yii::t('CustomPagesModule.base', 'Dashboard (Sidebar Widget)'),
+            self::WIDGET_DIRECTORY => Yii::t('CustomPagesModule.base', 'Directory (Sidebar Widget)'),
+            self::WIDGET_SPACE => Yii::t('CustomPagesModule.base', 'Space (Sidebar Widget)')
         );
     }
 
@@ -124,6 +155,7 @@ class CustomPage extends HActiveRecord
             self::TYPE_MARKDOWN => Yii::t('CustomPagesModule.base', 'MarkDown'),
             self::TYPE_IFRAME => Yii::t('CustomPagesModule.base', 'IFrame'),
             self::TYPE_PHP => Yii::t('CustomPagesModule.base', 'PHP'),
+            self::TYPE_WIDGET => Yii::t('CustomPagesModule.base', 'Widget'),
         );
     }
 

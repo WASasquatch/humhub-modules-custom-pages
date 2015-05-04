@@ -44,7 +44,7 @@ class ViewController extends Controller
     public function accessRules()
     {
         return array(
-            array('allow', // due to the nature of this module, all members should be allowed and sorted within
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'users' => array('*'),
             ),
 		);
@@ -64,9 +64,9 @@ class ViewController extends Controller
             throw new CHttpException(403, 'Access denied!');
         }
 		
-        if ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) {
-              throw new CHttpException(403, 'Registered members only!');
-        }
+		if ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) {
+			throw new CHttpException(403, 'Registered users only!');
+		}
 
         if ($page->navigation_class == CustomPage::NAV_CLASS_ACCOUNTNAV) {
             $this->subLayout = "application.modules_core.user.views.account._layout";

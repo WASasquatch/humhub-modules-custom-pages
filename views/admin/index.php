@@ -12,6 +12,7 @@
         <?php if (count($pages) != 0): ?>
             <?php
             $classes = CustomPage::getNavigationClasses();
+            $widgets = CustomPage::getWidgetClasses();
             $types = CustomPage::getPageTypes();
             ?>
             <table class="table">
@@ -19,6 +20,7 @@
                     <th><?php echo Yii::t('CustomPagesModule.base', 'Title'); ?></th>
                     <th><?php echo Yii::t('CustomPagesModule.base', 'Navigation'); ?></th>
                     <th><?php echo Yii::t('CustomPagesModule.base', 'Type'); ?></th>
+                    <th><?php echo Yii::t('CustomPagesModule.base', 'Widget Type'); ?></th>
                     <th><?php echo Yii::t('CustomPagesModule.base', 'Sort Order'); ?></th>
                     <th><?php echo Yii::t('CustomPagesModule.base', 'Visibility'); ?></th>
                     <th>&nbsp;</th>
@@ -26,8 +28,9 @@
                 <?php foreach ($pages as $page): ?>
                     <tr>
                         <td><i class="fa <?php echo $page->icon; ?>"></i> <?php echo HHtml::link($page->title, $this->createUrl('edit', array('id' => $page->id))); ?></td>
-                        <td><?php echo $classes[$page->navigation_class]; ?></td>
+                        <td><?php echo (isset($classes[$page->navigation_class])) ? $classes[$page->navigation_class] : Yii::t('CustomPagesModule.base', 'None'); ?></td>
                         <td><?php echo $types[$page->type]; ?></td>
+                        <td><?php echo (isset($widgets[$page->widget_class])) ? $widgets[$page->widget_class] : Yii::t('CustomPagesModule.base', 'None'); ?></td>
                         <td><?php echo $page->sort_order; ?></td>
                         <td><?php echo $page->visibility; ?></td>
                         <td><?php echo HHtml::link('Edit', $this->createUrl('edit', array('id' => $page->id)), array('class' => 'btn btn-primary btn-xs pull-right')); ?></td>
@@ -45,3 +48,5 @@
 
     </div>
 </div>
+
+

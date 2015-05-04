@@ -18,7 +18,7 @@
 
         <div class="form-group">
             <?php echo $form->labelEx($page, 'title'); ?>
-            <?php echo $form->textField($page, 'title', array('class' => 'form-control', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Page title'))); ?>
+            <?php echo $form->textField($page, 'title', array('id' => 'item_title', 'class' => 'form-control', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Page Title'))); ?>
         </div>
 
         <div class="form-group">
@@ -26,20 +26,33 @@
             <?php echo $form->dropdownList($page, 'type', CustomPage::getPageTypes(), array('id' => 'page_type', 'class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content Type'))); ?>
         </div>
 
+        
         <div class="form-group" id="content_field">
-            <?php echo $form->labelEx($page, 'content'); ?>
-            <?php echo $form->textArea($page, 'content', array('class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content'))); ?>
+            <?php echo $form->labelEx($page, 'content'); ?><br />
+            <div id="conPrefix" style="color:#CC0000">&#x3C;?php</div>
+            <?php echo $form->textArea($page, 'content', array('class' => 'form-control', 'rows' => '25', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content'))); ?>
+            <div id="conSuffix" style="color:#CC0000">?&#x3E;</div>
         </div>
-
+        
+        <div class="form-group" id="markdown_field">
+            <?php echo $form->labelEx($page, 'markdown'); ?><br />
+            <?php echo $form->textArea($page, 'markdown', array('id' => 'markdownForm', 'class' => 'form-control', 'rows' => '24', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content'))); ?>
+            <?php $this->widget('application.widgets.MarkdownEditorWidget', array('fieldId' => 'markdownForm')); ?>
+        </div>
+        
         <div class="form-group" id="url_field">
             <?php echo $form->labelEx($page, 'url'); ?>
             <?php echo $form->textField($page, 'url', array('class' => 'form-control', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'URL'))); ?>
         </div>
 
+        <div class="form-group" id="widget_class">
+            <?php echo $form->labelEx($page, 'widget_class'); ?>
+            <?php echo $form->dropdownList($page, 'widget_class', CustomPage::getWidgetClasses(), array('class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Widget Target'))); ?>
+        </div>
 
-        <div class="form-group">
+        <div class="form-group" id="navigation_class">
             <?php echo $form->labelEx($page, 'navigation_class'); ?>
-            <?php echo $form->dropdownList($page, 'navigation_class', CustomPage::getNavigationClasses(), array('class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Content'))); ?>
+            <?php echo $form->dropdownList($page, 'navigation_class', CustomPage::getNavigationClasses(), array('class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Target'))); ?>
         </div>
 
         <div class="form-group">
@@ -57,8 +70,20 @@
             <?php echo $form->labelEx($page, 'icon'); ?>
 
             <select class='selectpicker form-control' name="CustomPage[icon]">
-                <?php foreach ($faIcons as $icon): ?>
-                    <option data-content="<i class='fa  <?php echo $icon; ?>'></i>" value="<?php echo $icon; ?>" <?php if ($page->icon == $icon): ?>selected='selected'<?php endif; ?>><?php echo $icon; ?></option>
+                <?php 
+                    $first = true; 
+                    $second = true;
+                    foreach ($faIcons as $icon):
+                ?>
+                    <?php if ($first): ?>
+                        <option data-content="None" value="none" <?php if ($page->icon == 'none'): ?>selected='selected'<?php endif; ?>>None</option> 
+                    <?php $first = false; ?>
+                    <?php elseif (!$first && $second): ?>
+                        <option data-content="<i class='fa fa-fw'></i>" value="fa-fw" <?php if ($page->icon == 'fa-fw'): ?>selected='selected'<?php endif; ?>>Blank</option>
+                    <?php $second = false; ?>
+                    <?php else: ?>
+                        <option data-content="<i class='fa <?php echo $icon; ?>'></i>" value="<?php echo $icon; ?>" <?php if ($page->icon == $icon): ?>selected='selected'<?php endif; ?>><?php echo $icon; ?></option>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -94,21 +119,94 @@
 
 <script>
 
-    if ($("#page_type").val() == '1' || $("#page_type").val() == '3') {
-        $("#content_field").hide();
-    } else {
-        $("#url_field").hide();
-    }
-
-    $("#page_type").change(function() {
-        if ($("#page_type").val() == '1' || $("#page_type").val() == '3') {
+    $(document).ready(function(){
+        var t = $("#page_type").val();
+        var telm = $("#page_type");
+        $("#widget_class").hide();
+        if (t == '1' || t == '3') {
             $("#content_field").hide();
             $("#url_field").show();
-        } else {
-            $("#url_field").hide();
+            $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Page Title'); ?>');
+            $("#conPrefix").hide();
+            $("#conSuffix").hide();
+            $("#widget_class").hide(); // Why isn't this running...?
+            $("#navigation_class").show();
+        } else  if (t == '2' || t == '4') {
+            $("#navigation_class").show();
+            $("#widget_class").hide();
+            $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Page Title'); ?>');
             $("#content_field").show();
+            $("#url_field").hide();
+            $("#conPrefix").hide();
+            $("#conSuffix").hide();   
+        } else  if (t == '5') {
+            $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Page Title'); ?>');
+            $("#content_field").show();
+            $("#url_field").hide();
+            $("#navigation_class").show();
+            $("#widget_class").hide();
+            $("#conPrefix").show();
+            $("#conSuffix").show();
+        } else if (t == '6') {
+            $("#widget_class").show();
+            $("#content_field").show();
+            $("#url_field").hide();
+            $("#navigation_class").hide();
+            $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Widget Name'); ?>');
+            $("#conPrefix").show();
+            $("#conSuffix").show();
         }
+        if (t == '4') {
+            $("#content_field").hide();
+            $("#markdown_field").show();
+        } else {
+            $("#markdown_field").hide();
+        }
+
+        telm.on('change', function() {
+            var t = $("#page_type").val();
+            if (t == '1' || t == '3') {
+                $("#content_field").hide();
+                $("#url_field").show();
+                $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Page Title'); ?>');
+                $("#conPrefix").hide();
+                $("#conSuffix").hide();
+                $("#widget_class").hide(); 
+                $("#navigation_class").show();
+            } else if (t == '2' || t == '4') {
+                $("#navigation_class").show();
+                $("#widget_class").hide();
+                $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Page Title'); ?>');
+                $("#content_field").show();
+                $("#url_field").hide();
+                $("#conPrefix").hide();
+                $("#conSuffix").hide();   
+            } else if (t == '5') {
+                $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Page Title'); ?>');
+                $("#content_field").show();
+                $("#url_field").hide();
+                $("#navigation_class").show();
+                $("#widget_class").hide();
+                $("#conPrefix").show();
+                $("#conSuffix").show();
+            } else if (t == '6') {
+                $("#widget_class").show();
+                $("#content_field").show();
+                $("#url_field").hide();
+                $("#navigation_class").hide();
+                $("#item_title").attr('placeholder', '<?php echo Yii::t('CustomPages.views_admin_edit', 'Widget Name'); ?>');
+                $("#conPrefix").show();
+                $("#conSuffix").show();
+            }
+            if (t == '4') {
+                $("#content_field").hide();
+                $("#markdown_field").show();
+            } else {
+                $("#markdown_field").hide();
+            }
+        });
     });
+
 
 
 </script>    

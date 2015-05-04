@@ -4,7 +4,7 @@ class m150413_030602_create_visibility_column extends EDbMigration
 {
 	public function up()
 	{
-		$this->addColumn('custom_pages_page', 'visibility', 'int(1)');
+        $this->addColumn('custom_pages_page', 'visibility', 'boolean DEFAULT 0');
 	}
 
 	public function down()
