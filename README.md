@@ -3,10 +3,10 @@ Custom Pages Extended
 
 Allows admins to add custom pages (html, **php**, or markdown) or external links to various navigations (e.g. top navigation, account menu).
 
-__Status:__ Alpha v0.2.0
-__Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages-extended/>
-__Author:__ Jordan Thompson, Luke
-__Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
+- __Status:__ Alpha v0.2.0
+- __Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages-extended/>
+- __Author:__ Jordan Thompson, Luke
+- __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
 ### New Features in Extended Version
 
@@ -17,8 +17,8 @@ __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
 
 ### Installation
 
-- Simply drop the module as "custom_pages" into your /protected/modules/ folder
-- Activate, and configure the module.
+- Simply drop the module as **custom_pages** into your `/protected/modules/` folder
+- Activate the module
 
 ### PHP Page Usage
 
