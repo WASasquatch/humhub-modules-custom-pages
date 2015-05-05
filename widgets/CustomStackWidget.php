@@ -19,7 +19,7 @@ class CustomStackWidget extends HWidget {
         }
         if ($this->targets) {
             if (Yii::app()->request->getParam('sguid') != null && @in_array(Yii::app()->request->getParam('sguid'), $this->targets) || Yii::app()->request->getParam('sguid') == $this->targets) {
-                if ($this->notemplate) {
+                if ((int)$this->notemplate == 1) {
                     $this->render('blankWidget', array(
                         'id' => $this->id,
                         'title' => $this->title,
@@ -40,7 +40,7 @@ class CustomStackWidget extends HWidget {
                 }
             }
         } else {
-            if ($this->notemplate) {
+            if ((int)$this->notemplate == 1) {
                 $this->render('blankWidget', array(
                     'id' => $this->id,
                     'title' => $this->title,
