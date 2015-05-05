@@ -26,5 +26,8 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 - You can use the object var `$user` to access user information such as the user display name `$user->displayName`
 - [Example Inline-Module HStats](https://github.com/WASasquatch/humhub-modules-custom-pages-extended/blob/master/docs/example.md)
 
+### What is a Inline-Module
+A Inline-Module is a form of module that is ran all within one file hooked into the main system is is extending. Usually these forms of modules are included `include()` into a application that updates regularily, allowing your code to be seperate and easily modified/re-included.  
+
 For more  information visit parent module:
 <https://github.com/humhub/humhub-modules-custom-pages>
