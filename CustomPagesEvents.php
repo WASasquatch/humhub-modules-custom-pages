@@ -46,7 +46,7 @@ class CustomPagesEvents
             if ($page->type != CustomPage::TYPE_WIDGET) {
                 // Admin only or not public page
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
-                    return;
+                    continue;
                 }
                 
                 $event->sender->addItem(array(
@@ -67,7 +67,7 @@ class CustomPagesEvents
             if ($page->type != CustomPage::TYPE_WIDGET) {
                 // Admin only or not public page
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
-                    return;
+                    continue;
                 }
 
                 $event->sender->addItem(array(
@@ -93,7 +93,7 @@ class CustomPagesEvents
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_DASHBOARD)) as $page) {
                 // Admin only or not public widget and double check type(?)
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
-                    return;
+                    continue;
                 }
                                 
                 $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array(
@@ -123,7 +123,7 @@ class CustomPagesEvents
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_DIRECTORY)) as $page) {
                 // Admin only or not public widget and double check type(?)
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
-                    return;
+                    continue;
                 }
                 
                 $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array(
@@ -153,7 +153,7 @@ class CustomPagesEvents
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_SPACE)) as $page) {
                 // Admin only or not public widget and double check type(?)
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
-                    return;
+                    continue;
                 }
                 $spaceTargets = ($page->widget_targets != '') ? ((count($page->widget_targets) > 0) ? $page->widget_targets : false) : false;
                 $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array(
