@@ -21,7 +21,7 @@
 /**
  * Description of CustomPagesEvents
  *
- * @author luke
+ * @author luke, Jordan Thompson (WASasquatch)
  */
 class CustomPagesEvents
 {
@@ -91,14 +91,23 @@ class CustomPagesEvents
     {
         if (Yii::app()->moduleManager->isEnabled('custom_pages')) {
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_DASHBOARD)) as $page) {
-                // Admin only or not public widget
+                // Admin only or not public widget and double check type(?)
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
                     return;
                 }
                                 
-                $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array('id' => $page->id, 'title' => $page->title, 'content' => $page->content, 'icon' => $page->icon, 'visibility' => $page->visibility), array(
-                    'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
-                ));
+                $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array(
+                        'id' => $page->id, 
+                        'title' => $page->title, 
+                        'content' => $page->content, 
+                        'icon' => $page->icon, 
+                        'visibility' => $page->visibility,
+                        'template' => $page->widget_template
+                    ), 
+                    array(
+                        'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
+                    )
+                );
             }
         }
     }
@@ -112,14 +121,23 @@ class CustomPagesEvents
     {
         if (Yii::app()->moduleManager->isEnabled('custom_pages')) {
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_DIRECTORY)) as $page) {
-                // Admin only or not public widget
+                // Admin only or not public widget and double check type(?)
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
                     return;
                 }
                 
-                $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array('id' => $page->id, 'title' => $page->title, 'content' => $page->content, 'icon' => $page->icon, 'visibility' => $page->visibility), array(
-                    'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
-                ));
+                $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array(
+                        'id' => $page->id, 
+                        'title' => $page->title, 
+                        'content' => $page->content, 
+                        'icon' => $page->icon, 
+                        'visibility' => $page->visibility,
+                        'template' => $page->widget_template
+                    ), 
+                    array(
+                        'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
+                    )
+                );
             }
         }
     }
@@ -133,14 +151,24 @@ class CustomPagesEvents
     {
         if (Yii::app()->moduleManager->isEnabled('custom_pages')) {
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_SPACE)) as $page) {
-                // Admin only or not public widget
+                // Admin only or not public widget and double check type(?)
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
                     return;
                 }
-                
-                $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array('id' => $page->id, 'title' => $page->title, 'content' => $page->content, 'icon' => $page->icon, 'visibility' => $page->visibility), array(
-                    'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
-                ));
+                $spaceTargets = ($page->widget_targets != '') ? ((count($page->widget_targets) > 0) ? $page->widget_targets : false) : false;
+                $event->sender->addWidget('application.modules.custom_pages.widgets.CustomStackWidget', array(
+                        'id' => $page->id, 
+                        'title' => $page->title, 
+                        'content' => $page->content, 
+                        'icon' => $page->icon, 
+                        'visibility' => $page->visibility,
+                        'notemplate' => $page->widget_template,
+                        'targets' => $spaceTargets
+                    ), 
+                    array(
+                        'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
+                    )
+                );
             }
         }
     }

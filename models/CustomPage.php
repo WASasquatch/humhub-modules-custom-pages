@@ -19,6 +19,8 @@ class CustomPage extends HActiveRecord
     public $url;
     public $markdown;
     public $widget_class;
+    public $widget_targets;
+    public $widget_template;
 
     // Navigations
     const NAV_CLASS_TOPNAV = 'TopMenuWidget';
@@ -63,9 +65,10 @@ class CustomPage extends HActiveRecord
         // will receive user inputs.
         return array(
             array('type, title, widget_class, navigation_class', 'required'),
-            array('type, sort_order, admin_only, visibility', 'numerical', 'integerOnly' => true),
+            array('type, sort_order, admin_only, visibility, widget_template', 'numerical', 'integerOnly' => true),
             array('title, widget_class, navigation_class', 'length', 'max' => 255),
             array('icon', 'length', 'max' => 100),
+            array('widget_targets', 'widgetCheckSpaceGuid'),
             array('content, url', 'safe'),
         );
     }
@@ -87,17 +90,19 @@ class CustomPage extends HActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
-            'type' => 'Type',
-            'title' => 'Title',
-            'icon' => 'Icon',
-            'content' => 'Content',
-            'url' => 'URL',
-            'sort_order' => 'Sort Order',
-            'admin_only' => 'Only visible for admins',
-			'visibility' => 'Public to guests',
-            'navigation_class' => 'Navigation',
-            'widget_class' => 'Widget Type',
+            'id' => Yii::t('CustomPages.base', 'ID'),
+            'type' => Yii::t('CustomPages.base', 'Type'),
+            'title' => Yii::t('CustomPages.base', 'Title'),
+            'icon' => Yii::t('CustomPages.base', 'Icon'),
+            'content' => Yii::t('CustomPages.base', 'Content'),
+            'url' => Yii::t('CustomPages.base', 'URL'),
+            'sort_order' => Yii::t('CustomPages.base', 'Sort Order'),
+            'admin_only' => Yii::t('CustomPages.base', 'Only visible for admins'),
+			'visibility' => Yii::t('CustomPages.base', 'Public to guests'),
+            'navigation_class' => Yii::t('CustomPages.base', 'Navigation Target'),
+            'widget_class' => Yii::t('CustomPages.base', 'Widget Type'),
+            'widget_template' => Yii::t('CustomPages.base', 'No Template'),
+            'widget_targets' => Yii::t('CustomPages.base', 'Space Targets (GUIDs separated by commas)')
         );
     }
 
@@ -114,6 +119,9 @@ class CustomPage extends HActiveRecord
         } else {
             $this->widget_class = 'null';
         }
+        if ($this->widget_targets != '') {
+            $this->widget_targets = (stristr($this->widget_targets, ',')) ? json_encode(explode(',', trim($this->widget_targets))) : json_encode(array($this->widget_targets));
+        }
         
         return parent::beforeSave();
     }
@@ -126,6 +134,17 @@ class CustomPage extends HActiveRecord
         if ($this->type == self::TYPE_MARKDOWN) {
             $this->markdown = $this->content;
         }
+        if ($this->widget_targets != '') {
+            $this->widget_targets = (count(json_decode($this->widget_targets)) > 0) ? implode(', ', json_decode($this->widget_targets)) : json_decode($this->widget_targets);
+            if (is_array($this->widget_targets)) {
+                $targets = $this->widget_targets;
+                $this->widget_targets = '';
+                foreach($targets as $widget) {
+                    $this->widget_targets .= $widget;
+                }
+            }
+        }
+        
         
         return parent::afterFind();
     }
@@ -158,5 +177,27 @@ class CustomPage extends HActiveRecord
             self::TYPE_WIDGET => Yii::t('CustomPagesModule.base', 'Widget'),
         );
     }
+    
+    /**
+     * This validator function checks the widget_targets.
+     *
+     * @param type $attribute
+     * @param type $params
+     */
+    public function widgetCheckSpaceGuid($attribute, $params)
+    {
+        if ($this->widget_targets != '') {
+            $explodeBy = (stristr($this->widget_targets, ', ')) ? ', ' : ',';
+            foreach (explode($explodeBy, trim($this->widget_targets)) as $spaceGuid) {
+                if ($spaceGuid != '') {
+                    $space = Space::model()->findByAttributes(array('guid' => $spaceGuid));
+                    if ($space == null) {
+                        $this->addError($attribute, Yii::t('CustomPagesModule.base', "There is a invalid space in your targets. Please ensure they point to existing spaces."));
+                    }
+                }
+            }
+        }
+    }
+
 
 }

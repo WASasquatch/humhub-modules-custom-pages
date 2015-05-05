@@ -21,7 +21,7 @@
 /**
  * Description of AdminController
  *
- * @author luke
+ * @author luke, Jordan Thompson (WASasquatch)
  */
 class AdminController extends Controller
 {
@@ -68,9 +68,7 @@ class AdminController extends Controller
         if ($page === null) {
             $page = new CustomPage;
         }
-
-        $page->markdown = $page->content;
-
+        
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'page-edit-form') {
             echo CActiveForm::validate($page);
             Yii::app()->end();

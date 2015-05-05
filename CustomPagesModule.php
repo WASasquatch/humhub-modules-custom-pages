@@ -19,11 +19,7 @@ class CustomPagesModule extends HWebModule
     }
     
     public function uninstall() {
-        if (parent::uninstall()) {
-            foreach (CustomPage::model()->findAll() as $entry) {
-                $entry->delete();
-            }
-        }
+        return parent::uninstall();
     }
 
 }

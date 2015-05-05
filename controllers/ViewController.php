@@ -21,7 +21,7 @@
 /**
  * Description of ViewController
  *
- * @author luke, jordan
+ * @author luke, Jordan Thompson (WASasquatch)
  */
 class ViewController extends Controller
 {

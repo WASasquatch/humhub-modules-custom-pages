@@ -53,12 +53,12 @@
             <?php echo $form->labelEx($page, 'widget_targets'); ?>
             <?php echo $form->textField($page, 'widget_targets', array('class' => 'form-control', 'id' => 'widgetTargets')); ?>
             <?php
-                //$this->widget('application.modules_core.space.widgets.SpacePickerWidget', array(
-                //    'inputId' => 'widgetTargets',
-                //    'model' => $page,
-                //    'maxSpaces' => 50,
-                //    'attribute' => 'widget_targets'
-                //));
+                $this->widget('application.modules_core.space.widgets.SpacePickerWidget', array(
+                    'inputId' => 'widgetTargets',
+                    'model' => $page,
+                    'maxSpaces' => 50,
+                    'attribute' => 'widget_targets'
+                ));
             ?>
         </div>
 
