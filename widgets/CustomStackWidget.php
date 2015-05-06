@@ -13,9 +13,25 @@ class CustomStackWidget extends HWidget {
     public $notemplate;
     public $targets;
 
+    public function __construct() {
+        if (!isset($this->id)) {
+            $this->id = '';
+        }
+        if (!isset($this->icon)) {
+            $this->icon = '';
+        }
+        if (!isset($this->targets)) {
+            $this->targets = false;
+        }
+        if (!isset($this->notemplate)) {
+            $this->notemplate = 0;
+        }
+        return parent::__construct();
+    }
+    
     public function run() {
         if(Yii::app()->user->isGuest && !$this->visibility) {
-            return;
+            continue;
         }
         if ($this->targets) {
             if (Yii::app()->request->getParam('sguid') != null && @in_array(Yii::app()->request->getParam('sguid'), $this->targets) || Yii::app()->request->getParam('sguid') == $this->targets) {
