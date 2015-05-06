@@ -2,7 +2,7 @@
 
 Here is a simple example widget that displays a welcome back message every 24 hours for the Dashboard.
 
-###This page is setup as follow 
+###This page is setup as follows 
 - **Type** = Widget
 - **Widget Type** = Dashboard (Sidebar Widget)
 - **No Template** = Checked
