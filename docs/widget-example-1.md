@@ -7,7 +7,10 @@ This page is setup as a Widget, with the Widget Type as Dashboard, and the No Te
 if (!(isset(Yii::app()->request->cookies['welcome_dashboard'])) || (int)Yii::app()->request->cookies['welcome_dashboard']->value != 1) {
 
     /* Set Cookie */
-    Yii::app()->request->cookies['welcome_dashboard'] = new CHttpCookie('welcome_dashboard', 1, array('expire' => time()+43200, 'path' => parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+    Yii::app()->request->cookies['welcome_dashboard'] = new CHttpCookie('welcome_dashboard', 1, array(
+        'expire' => time()+43200, 
+        'path' => parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+    ));
 
     /* Write some content to the use returning 
      * Remember we're in PHP! 
