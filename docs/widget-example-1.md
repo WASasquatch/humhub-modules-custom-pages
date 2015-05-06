@@ -1,6 +1,10 @@
-### Here is a simple example widget that displays a welcome back message every 24 hours for the Dashboard.
 
-This page is setup as a Widget, with the Widget Type as Dashboard, and the No Template option selected.
+Here is a simple example widget that displays a welcome back message every 24 hours for the Dashboard.
+
+This page is setup as follow 
+- Type => Widget
+- Widget Type => Dashboard (Sidebar Widget)
+- No Template => Checked
 
 ```php
 /*  Has this message been displayed? Lets check our cookie */
