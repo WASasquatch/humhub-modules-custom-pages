@@ -20,7 +20,12 @@ if (!(isset(Yii::app()->request->cookies['welcome_dashboard'])) || (int)Yii::app
     /* Render the widget with the generic template,. 
      * Note remember we have No Template checked 
      */
-    $this->render('genericWidget', array('icon' => $icon, 'title' => $title, 'content' => $content, 'user' => $user));
+    $this->render('genericWidget', array(
+        'icon' => $icon, 
+        'title' => $title, 
+        'content' => $content, 
+        'user' => $user
+    ));
 
 }
 ```
