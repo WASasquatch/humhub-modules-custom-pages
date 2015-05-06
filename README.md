@@ -36,3 +36,4 @@ For more  information visit parent module:
 
 - [Example PHP Page Inline-Module HStats](docs/example-hstats.md)
 - [Example Widget "Welcome Back"](docs/widget-example-1.md)
+- Submit your own Widget/PHP examples via push requests, and help others learn!
