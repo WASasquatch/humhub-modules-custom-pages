@@ -57,6 +57,8 @@ class CustomPagesEvents
                     'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'view' && Yii::app()->request->getParam('id') == $page->id),
                     'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000,
                 ));
+            } else {
+                continue;
             }
         }
     }
@@ -78,6 +80,8 @@ class CustomPagesEvents
                     'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'view' && Yii::app()->request->getParam('id') == $page->id),
                     'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000,
                 ));
+            } else {
+                continue;
             }
         }
     }
