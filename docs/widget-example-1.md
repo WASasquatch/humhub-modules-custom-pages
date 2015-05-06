@@ -12,7 +12,7 @@ if (!(isset(Yii::app()->request->cookies['welcome_dashboard'])) || (int)Yii::app
         'path' => parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
     ));
 
-    /* Write some content to the use returning 
+    /* Write some content to for the widget
      * Remember we're in PHP! 
      */
     $content = 'echo "Welcome back <strong>" . $user->displayName . "</strong>!";';
