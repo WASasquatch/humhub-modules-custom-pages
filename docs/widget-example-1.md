@@ -1,4 +1,4 @@
-# Here is a simple example widget that displays a welcome back message every 24 hours for the Dashboard.
+### Here is a simple example widget that displays a welcome back message every 24 hours for the Dashboard.
 
 This page is setup as a Widget, with the Widget Type as Dashboard, and the No Template option selected.
 
