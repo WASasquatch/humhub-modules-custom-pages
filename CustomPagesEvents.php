@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * HumHub
@@ -102,7 +102,7 @@ class CustomPagesEvents
                         'content' => $page->content, 
                         'icon' => $page->icon, 
                         'visibility' => $page->visibility,
-                        'template' => $page->widget_template
+                        'notemplate' => $page->widget_template
                     ), 
                     array(
                         'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
@@ -132,7 +132,7 @@ class CustomPagesEvents
                         'content' => $page->content, 
                         'icon' => $page->icon, 
                         'visibility' => $page->visibility,
-                        'template' => $page->widget_template
+                        'notemplate' => $page->widget_template
                     ), 
                     array(
                         'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000
