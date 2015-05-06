@@ -33,5 +33,5 @@ For more  information visit parent module:
 
 ### Examples
 
-- [Example Inline-Module HStats](docs/example-hstats.md)
+- [Example PHP Page Inline-Module HStats](docs/example-hstats.md)
 - [Example Widget "Welcome Back"](docs/widget-example-1.md)
