@@ -3,7 +3,7 @@
     "name": "Custom Pages Extended",
     "description": "Allows admins to add custom pages (html, php, or markdown), widgets (php), and iframes or external links to various navigations (e.g. top navigation, account menu).",
     "keywords": ["pages", "widget", "custom", "iframe", "markdown", "link", "navigation", "php"],
-    "version": "0.2.1",
+    "version": "0.2.3",
     "authors": [
         {
             "name": "Lucas Bartholemy"
