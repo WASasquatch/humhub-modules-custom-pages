@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * HumHub
@@ -43,16 +43,26 @@ class CustomPagesEvents
     public static function onTopMenuInit($event)
     {
         foreach (CustomPage::model()->findAllByAttributes(array('navigation_class' => CustomPage::NAV_CLASS_TOPNAV)) as $page) {
-            if ($page->type != CustomPage::TYPE_WIDGET) {
+            if ($page->type != CustomPage::TYPE_WIDGET && $page->visiblity != CustomPage::VISIBILITY_UNLISTED) {
                 // Admin only or not public page
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
                     continue;
                 }
                 
+                if ($page->type == CustomPage::TYPE_LINK) {
+                    if (isset($page->link_type) && $page->link_type != '') {
+                        $linktarget = $page->link_type;
+                    } else {
+                        $linktarget = '_self';
+                    }
+                } else {
+                    $linktarget = '';
+                }
+                
                 $event->sender->addItem(array(
                     'label' => $page->title,
                     'url' => Yii::app()->createUrl('//custom_pages/view', array('id' => $page->id)),
-                    'target' => ($page->type == CustomPage::TYPE_LINK) ? '_blank' : '',
+                    'target' => $linktarget,
                     'icon' => '<i class="fa ' . $page->icon . '"></i>',
                     'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'view' && Yii::app()->request->getParam('id') == $page->id),
                     'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000,
@@ -66,16 +76,26 @@ class CustomPagesEvents
     public static function onAccountMenuInit($event)
     {
         foreach (CustomPage::model()->findAllByAttributes(array('navigation_class' => CustomPage::NAV_CLASS_ACCOUNTNAV)) as $page) {
-            if ($page->type != CustomPage::TYPE_WIDGET) {
+            if ($page->type != CustomPage::TYPE_WIDGET && $page->visiblity != CustomPage::VISIBILITY_UNLISTED) {
                 // Admin only or not public page
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
                     continue;
+                }
+                
+                if ($page->type == CustomPage::TYPE_LINK) {
+                    if (isset($page->link_type) && $page->link_type != '') {
+                        $linktarget = $page->link_type;
+                    } else {
+                        $linktarget = '_self';
+                    }
+                } else {
+                    $linktarget = '';
                 }
 
                 $event->sender->addItem(array(
                     'label' => $page->title,
                     'url' => Yii::app()->createUrl('//custom_pages/view', array('id' => $page->id)),
-                    'target' => ($page->type == CustomPage::TYPE_LINK) ? '_blank' : '',
+                    'target' => $linktarget,
                     'icon' => '<i class="fa ' . $page->icon . '"></i>',
                     'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'view' && Yii::app()->request->getParam('id') == $page->id),
                     'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000,

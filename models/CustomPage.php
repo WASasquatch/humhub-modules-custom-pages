@@ -21,6 +21,8 @@ class CustomPage extends HActiveRecord
     public $widget_class;
     public $widget_targets;
     public $widget_template;
+    public $visiblity;
+    public $link_type;
 
     // Navigations
     const NAV_CLASS_TOPNAV = 'TopMenuWidget';
@@ -36,6 +38,10 @@ class CustomPage extends HActiveRecord
     const TYPE_MARKDOWN = '4';
 	const TYPE_PHP = '5';
     const TYPE_WIDGET = '6';
+    // Page Visiblity
+    const VISIBILITY_GUEST = 0;
+    const VISIBILITY_MEMBER = 1;
+    const VISIBILITY_UNLISTED = 2;
 
 
     /**
@@ -65,11 +71,13 @@ class CustomPage extends HActiveRecord
         // will receive user inputs.
         return array(
             array('type, title, widget_class, navigation_class', 'required'),
-            array('type, sort_order, admin_only, visibility, widget_template', 'numerical', 'integerOnly' => true),
-            array('title, widget_class, navigation_class', 'length', 'max' => 255),
-            array('icon', 'length', 'max' => 100),
+            array('type, sort_order, admin_only, widget_template', 'numerical', 'integerOnly' => true),
+            array('title, widget_class, navigation_class', 'length', 'max' => 255, 'message' => 'Title must be less then 255 characters'),
+            array('visiblity', 'numerical', 'integerOnly' => true, 'max' => 2),
+            array('icon, link_type', 'length', 'max' => 100),
             array('widget_targets', 'widgetCheckSpaceGuid'),
-            array('content, url', 'safe'),
+            array('visiblity', 'widgetCheckVisibility'),
+            array('content, url, title', 'safe'),
         );
     }
 
@@ -96,9 +104,10 @@ class CustomPage extends HActiveRecord
             'icon' => Yii::t('CustomPages.base', 'Icon'),
             'content' => Yii::t('CustomPages.base', 'Content'),
             'url' => Yii::t('CustomPages.base', 'URL'),
+            'link_type' => Yii::t('CustomPages.base', 'Link Type'),
             'sort_order' => Yii::t('CustomPages.base', 'Sort Order'),
             'admin_only' => Yii::t('CustomPages.base', 'Only visible for admins'),
-			'visibility' => Yii::t('CustomPages.base', 'Public to guests'),
+			'visibility' => Yii::t('CustomPages.base', 'Visibility'),
             'navigation_class' => Yii::t('CustomPages.base', 'Navigation Target'),
             'widget_class' => Yii::t('CustomPages.base', 'Widget Type'),
             'widget_template' => Yii::t('CustomPages.base', 'No Template'),
@@ -178,6 +187,23 @@ class CustomPage extends HActiveRecord
         );
     }
     
+    public static function getVisiblityTypes()
+    {
+        return array(
+            self::VISIBILITY_GUEST => Yii::t('CustomPagesModule.base', 'Guest (Everyone)'),
+            self::VISIBILITY_MEMBER => Yii::t('CustomPagesModule.base', 'Members (Members only)'),
+            self::VISIBILITY_UNLISTED => Yii::t('CustomPagesModule.base', 'Unlisted (No menu links)'),
+        );
+    }
+
+    public static function getLinkTypes()
+    {
+        return array(
+            '_blank' => Yii::t('CustomPagesModule.base', '_blank'),
+            '_self' => Yii::t('CustomPagesModule.base', '_self'),
+        );
+    }
+    
     /**
      * This validator function checks the widget_targets.
      *
@@ -195,6 +221,14 @@ class CustomPage extends HActiveRecord
                         $this->addError($attribute, Yii::t('CustomPagesModule.base', "There is a invalid space in your targets. Please ensure they point to existing spaces."));
                     }
                 }
+            }
+        }
+    }
+    
+    public function widgetCheckVisibility($attribute, $params) {
+        if ($this->type == '6') {
+            if ($this->visiblity == 2) {
+                $this->addError($attribute, Yii::t('CustomPagesModule.base', "Widget cannot use unlisted type."));               
             }
         }
     }

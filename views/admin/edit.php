@@ -44,6 +44,11 @@
             <?php echo $form->textField($page, 'url', array('class' => 'form-control', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'URL'))); ?>
         </div>
 
+        <div class="form-group" id="link_types">
+            <?php echo $form->labelEx($page, 'link_type'); ?>
+            <?php echo $form->dropdownList($page, 'link_type', CustomPage::getLinkTypes(), array('class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Link Type'))); ?>
+        </div>
+        
         <div class="form-group" id="widget_class">
             <?php echo $form->labelEx($page, 'widget_class'); ?>
             <?php echo $form->dropdownList($page, 'widget_class', CustomPage::getWidgetClasses(), array('id' => 'widgetClassField', 'class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Widget Target'))); ?>
@@ -106,6 +111,11 @@
                 <?php endforeach; ?>
             </select>
         </div>
+            
+        <div class="form-group" id="visiblity_types">
+            <?php echo $form->labelEx($page, 'visibility'); ?>
+            <?php echo $form->dropdownList($page, 'visibility', CustomPage::getVisiblityTypes(), array('class' => 'form-control', 'rows' => '5', 'placeholder' => Yii::t('CustomPages.views_admin_edit', 'Visibility'))); ?>
+        </div>   
 
         <div class="form-group">
             <div class="checkbox">
@@ -113,15 +123,7 @@
                     <?php echo $form->checkBox($page, 'admin_only'); ?> <?php echo $page->getAttributeLabel('admin_only'); ?>
                 </label>
             </div>
-        </div>        
-            
-        <div class="form-group">
-            <div class="checkbox">
-                <label>
-                    <?php echo $form->checkBox($page, 'visibility'); ?> <?php echo $page->getAttributeLabel('visibility'); ?>
-                </label>
-            </div>
-        </div>        
+        </div>                
 
         <?php echo CHtml::submitButton(Yii::t('CustomPages.views_admin_edit', 'Save'), array('class' => 'btn btn-primary')); ?>
 
@@ -152,6 +154,7 @@ $(document).ready(function () {
         $("#content_field").toggle(t == 2 || t == 5 || t == 6);
         $("#conPrefix, #conSuffix").toggle(t == 5 || t == 6);
         $("#url_field").toggle(t == 1 || t == 3);
+        $("#link_types").toggle(t == 1);
         $("#navigation_class").toggle(t != 6);
         $("#markdown_field").toggle(t == 4);
         $("#widget_class, #widget_template").toggle(t == 6);
