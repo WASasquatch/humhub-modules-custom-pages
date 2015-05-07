@@ -49,20 +49,10 @@ class CustomPagesEvents
                     continue;
                 }
                 
-                if ($page->type == CustomPage::TYPE_LINK) {
-                    if (isset($page->link_type) && $page->link_type != '') {
-                        $linktarget = $page->link_type;
-                    } else {
-                        $linktarget = '_self';
-                    }
-                } else {
-                    $linktarget = '';
-                }
-                
                 $event->sender->addItem(array(
                     'label' => $page->title,
                     'url' => Yii::app()->createUrl('//custom_pages/view', array('id' => $page->id)),
-                    'target' => $linktarget,
+                    'target' => ($page->type == CustomPage::TYPE_LINK) ? ($page->link_type != '') ? $page->link_type : '_self') : '',
                     'icon' => '<i class="fa ' . $page->icon . '"></i>',
                     'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'view' && Yii::app()->request->getParam('id') == $page->id),
                     'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000,
@@ -81,21 +71,11 @@ class CustomPagesEvents
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
                     continue;
                 }
-                
-                if ($page->type == CustomPage::TYPE_LINK) {
-                    if (isset($page->link_type) && $page->link_type != '') {
-                        $linktarget = $page->link_type;
-                    } else {
-                        $linktarget = '_self';
-                    }
-                } else {
-                    $linktarget = '';
-                }
 
                 $event->sender->addItem(array(
                     'label' => $page->title,
                     'url' => Yii::app()->createUrl('//custom_pages/view', array('id' => $page->id)),
-                    'target' => $linktarget,
+                    'target' => ($page->type == CustomPage::TYPE_LINK) ? ($page->link_type != '') ? $page->link_type : '_self') : '',
                     'icon' => '<i class="fa ' . $page->icon . '"></i>',
                     'isActive' => (Yii::app()->controller->module && Yii::app()->controller->module->id == 'custom_pages' && Yii::app()->controller->id == 'view' && Yii::app()->request->getParam('id') == $page->id),
                     'sortOrder' => ($page->sort_order != '') ? $page->sort_order : 1000,
