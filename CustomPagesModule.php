@@ -11,14 +11,14 @@ class CustomPagesModule extends HWebModule
 
     public function disable()
     {
-        if (parent::disable()) {
-            return true;
-        }
-
-        return false;
+        return parent::disable();
     }
     
     public function uninstall() {
+        foreach (CustomPage::model()->findAll() as $entry) {
+            $entry->delete();
+        }
+        Yii::app()->db->createCommand()->dropTable(CustomPage::model()->tableName());
         return parent::uninstall();
     }
 

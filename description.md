@@ -9,10 +9,10 @@ Within the Custom Pages module, administrators can quickly and easily add additi
 
 
 **Source Code:**    
-<https://github.com/WASasquatch/humhub-modules-custom-pages>
+<https://github.com/WASasquatch/humhub-modules-custom-pages-extended/>
 
 **Changelog:**  
-<https://github.com/WASasquatch/humhub-modules-custom-pages/commits/master>
+<https://github.com/WASasquatch/humhub-modules-custom-pages-extended/commits/master>
 
 **Bugtracker:**  
-<https://github.com/WASasquatch/humhub-modules-custom-pages/issues>
+<https://github.com/WASasquatch/humhub-modules-custom-pages-extended/issues>

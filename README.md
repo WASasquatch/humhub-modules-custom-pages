@@ -3,7 +3,7 @@ Custom Pages Extended
 
 Allows admins to add custom pages (html, **php**, or markdown), widgets (php), iframes or external links to various navigations (e.g. top navigation, account menu).
 
-- __Status:__ Alpha v0.2.3
+- __Status:__ Alpha v0.2.4
 - __Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages-extended/>
 - __Author:__ Jordan Thompson, Luke
 - __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
@@ -13,6 +13,8 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 - **Widgets** Create widgets with inline-modules!
 - **PHP** Pages for Inline-Module Creation!
 - **Active User Model** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
+- Create Unlisted Pages
+- Set link target *(Currently broken)*
 - **More Soon** ...
 
 ### Installation

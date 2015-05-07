@@ -2,8 +2,8 @@
     "id": "custom_pages",
     "name": "Custom Pages Extended",
     "description": "Allows admins to add custom pages (html, php, or markdown), widgets (php), and iframes or external links to various navigations (e.g. top navigation, account menu).",
-    "keywords": ["pages", "widget", "custom", "iframe", "markdown", "link", "navigation", "php"],
-    "version": "0.2.3",
+    "keywords": ["custom", "pages", "widgets", "iframe", "markdown", "link", "navigation", "php", "dashboard", "spaces", "directory"],
+    "version": "0.2.4",
     "authors": [
         {
             "name": "Lucas Bartholemy"
@@ -16,7 +16,7 @@
 		}
     ],
     "homepage": "https://github.com/WASasquatch/humhub-modules-custom-pages-extended/",
-    "time": "2015-05-04",
+    "time": "2015-05-06",
     "humhub": {
         "minVersion": "0.11.2"
     },
