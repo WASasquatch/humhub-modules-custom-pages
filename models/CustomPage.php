@@ -38,7 +38,7 @@ class CustomPage extends HActiveRecord
     const TYPE_MARKDOWN = '4';
 	const TYPE_PHP = '5';
     const TYPE_WIDGET = '6';
-    // Page Visiblity
+    // Page Visibility
     const VISIBILITY_GUEST = 0;
     const VISIBILITY_MEMBER = 1;
     const VISIBILITY_UNLISTED = 2;
@@ -73,10 +73,10 @@ class CustomPage extends HActiveRecord
             array('type, title, widget_class, navigation_class', 'required'),
             array('type, sort_order, admin_only, widget_template', 'numerical', 'integerOnly' => true),
             array('title, widget_class, navigation_class', 'length', 'max' => 255, 'message' => 'Title must be less then 255 characters'),
-            array('visiblity', 'numerical', 'integerOnly' => true, 'max' => 2),
+            array('visibility', 'numerical', 'integerOnly' => true, 'max' => 2),
             array('icon, link_type', 'length', 'max' => 100),
             array('widget_targets', 'widgetCheckSpaceGuid'),
-            array('visiblity', 'widgetCheckVisibility'),
+            array('visibility', 'widgetCheckVisibility'),
             array('content, url, title', 'safe'),
         );
     }
