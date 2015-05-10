@@ -54,18 +54,18 @@ class ViewController extends Controller
     {
 
         $page = CustomPage::model()->findByPk(Yii::app()->request->getParam('id'));
-		$user = Yii::app()->user;
+	$user = Yii::app()->user;
 
         if ($page === null) {
-            throw new CHttpException('404', 'Could not find requested page');
+            throw new CHttpException('404', Yii::t('CustomPagesModule.views_Error', 'Could not find requested page'));
         }
 
         if  ($page->admin_only == 1 && !Yii::app()->user->isAdmin()) {
-            throw new CHttpException(403, 'Access denied!');
+            throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Access denied!'));
         }
 		
 		if ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) {
-			throw new CHttpException(403, 'Registered users only!');
+			throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Registered users only!'));
 		}
 
         if ($page->navigation_class == CustomPage::NAV_CLASS_ACCOUNTNAV) {
@@ -83,7 +83,7 @@ class ViewController extends Controller
         } elseif ($page->type == CustomPage::TYPE_MARKDOWN) {
             $this->render('markdown', array('md' => $page->content, 'navigationClass' => $page->navigation_class));
         } else {
-            throw new CHttpException(500, 'Invalid page type!');
+            throw new CHttpException(500, Yii::t('CustomPagesModule.views_Error', 'Invalid page type!'));
         }
     }
 
