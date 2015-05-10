@@ -39,9 +39,9 @@ class CustomPage extends HActiveRecord
 	const TYPE_PHP = '5';
     const TYPE_WIDGET = '6';
     // Page Visibility
-    const VISIBILITY_GUEST = 0;
-    const VISIBILITY_MEMBER = 1;
-    const VISIBILITY_UNLISTED = 2;
+    const VISIBILITY_GUEST = '0';
+    const VISIBILITY_MEMBER = '1';
+    const VISIBILITY_UNLISTED = '2';
 
 
     /**
@@ -98,20 +98,20 @@ class CustomPage extends HActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => Yii::t('CustomPages.base', 'ID'),
-            'type' => Yii::t('CustomPages.base', 'Type'),
-            'title' => Yii::t('CustomPages.base', 'Title'),
-            'icon' => Yii::t('CustomPages.base', 'Icon'),
-            'content' => Yii::t('CustomPages.base', 'Content'),
-            'url' => Yii::t('CustomPages.base', 'URL'),
-            'link_type' => Yii::t('CustomPages.base', 'Link Type'),
-            'sort_order' => Yii::t('CustomPages.base', 'Sort Order'),
-            'admin_only' => Yii::t('CustomPages.base', 'Only visible for admins'),
-			'visibility' => Yii::t('CustomPages.base', 'Visibility'),
-            'navigation_class' => Yii::t('CustomPages.base', 'Navigation Target'),
-            'widget_class' => Yii::t('CustomPages.base', 'Widget Type'),
-            'widget_template' => Yii::t('CustomPages.base', 'No Template'),
-            'widget_targets' => Yii::t('CustomPages.base', 'Space Targets (GUIDs separated by commas)')
+            'id' => Yii::t('CustomPagesModule.base', 'ID'),
+            'type' => Yii::t('CustomPagesModule.base', 'Type'),
+            'title' => Yii::t('CustomPagesModule.base', 'Title'),
+            'icon' => Yii::t('CustomPagesModule.base', 'Icon'),
+            'content' => Yii::t('CustomPagesModule.base', 'Content'),
+            'url' => Yii::t('CustomPagesModule.base', 'URL'),
+            'link_type' => Yii::t('CustomPagesModule.base', 'Link Type'),
+            'sort_order' => Yii::t('CustomPagesModule.base', 'Sort Order'),
+            'admin_only' => Yii::t('CustomPagesModule.base', 'Only visible for admins'),
+            'visibility' => Yii::t('CustomPagesModule.base', 'Visibility'),
+            'navigation_class' => Yii::t('CustomPagesModule.base', 'Navigation Target'),
+            'widget_class' => Yii::t('CustomPagesModule.base', 'Widget Type'),
+            'widget_template' => Yii::t('CustomPagesModule.base', 'No Template'),
+            'widget_targets' => Yii::t('CustomPagesModule.base', 'Space Targets (GUIDs separated by commas)')
         );
     }
 
@@ -227,7 +227,7 @@ class CustomPage extends HActiveRecord
     
     public function widgetCheckVisibility($attribute, $params) {
         if ($this->type == '6') {
-            if ($this->visiblity == 2) {
+            if ($this->visiblity == '2') {
                 $this->addError($attribute, Yii::t('CustomPagesModule.base', "Widget cannot use unlisted type."));               
             }
         }
