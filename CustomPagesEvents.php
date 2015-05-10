@@ -43,7 +43,7 @@ class CustomPagesEvents
     public static function onTopMenuInit($event)
     {
         foreach (CustomPage::model()->findAllByAttributes(array('navigation_class' => CustomPage::NAV_CLASS_TOPNAV)) as $page) {
-            if ($page->type != CustomPage::TYPE_WIDGET && $page->visibility != CustomPage::VISIBILITY_UNLISTED) {
+            if ($page->type != CustomPage::TYPE_WIDGET && (string)$page->visibility != CustomPage::VISIBILITY_UNLISTED) {
                 // Admin only or not public page
                 if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
                     continue;
@@ -66,9 +66,9 @@ class CustomPagesEvents
     public static function onAccountMenuInit($event)
     {
         foreach (CustomPage::model()->findAllByAttributes(array('navigation_class' => CustomPage::NAV_CLASS_ACCOUNTNAV)) as $page) {
-            if ($page->type != CustomPage::TYPE_WIDGET && $page->visibility != CustomPage::VISIBILITY_UNLISTED) {
+            if ($page->type != CustomPage::TYPE_WIDGET && (string)$page->visibility != CustomPage::VISIBILITY_UNLISTED) {
                 // Admin only or not public page
-                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest)) {
+                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ((string)$page->visibility == '0' && Yii::app()->user->isGuest)) {
                     continue;
                 }
 
@@ -96,7 +96,7 @@ class CustomPagesEvents
         if (Yii::app()->moduleManager->isEnabled('custom_pages')) {
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_DASHBOARD)) as $page) {
                 // Admin only or not public widget and double check type(?)
-                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
+                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ((string)$page->visibility == '0' && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
                     continue;
                 }
                                 
@@ -126,7 +126,7 @@ class CustomPagesEvents
         if (Yii::app()->moduleManager->isEnabled('custom_pages')) {
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_DIRECTORY)) as $page) {
                 // Admin only or not public widget and double check type(?)
-                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
+                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ((string)$page->visibility == '0' && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
                     continue;
                 }
                 
@@ -156,7 +156,7 @@ class CustomPagesEvents
         if (Yii::app()->moduleManager->isEnabled('custom_pages')) {
             foreach (CustomPage::model()->findAllByAttributes(array('type' => CustomPage::TYPE_WIDGET, 'widget_class' => CustomPage::WIDGET_SPACE)) as $page) {
                 // Admin only or not public widget and double check type(?)
-                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
+                if (($page->admin_only == 1 && !Yii::app()->user->isAdmin()) || ((string)$page->visibility == '0' && Yii::app()->user->isGuest) && $page->type != CustomPage::TYPE_WIDGET) {
                     continue;
                 }
                 $spaceTargets = ($page->widget_targets != '') ? ((count($page->widget_targets) > 0) ? $page->widget_targets : false) : false;
