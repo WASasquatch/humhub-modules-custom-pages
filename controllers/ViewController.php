@@ -47,14 +47,14 @@ class ViewController extends Controller
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
                 'users' => array('*'),
             ),
-		);
+        );
     }
 
     public function actionIndex()
     {
 
         $page = CustomPage::model()->findByPk(Yii::app()->request->getParam('id'));
-	$user = Yii::app()->user;
+    $user = Yii::app()->user;
 
         if ($page === null) {
             throw new CHttpException('404', Yii::t('CustomPagesModule.views_Error', 'Could not find requested page'));
@@ -63,10 +63,10 @@ class ViewController extends Controller
         if  ($page->admin_only == 1 && !Yii::app()->user->isAdmin()) {
             throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Access denied!'));
         }
-		
-		if ($page->visibility == CustomPage::VISIBILITY_MEMBER && Yii::app()->user->isGuest) {
-			throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Registered users only!'));
-		}
+        
+        if ($page->visibility == CustomPage::VISIBILITY_MEMBER && Yii::app()->user->isGuest) {
+            throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Registered users only!'));
+        }
 
         if ($page->navigation_class == CustomPage::NAV_CLASS_ACCOUNTNAV) {
             $this->subLayout = "application.modules_core.user.views.account._layout";
