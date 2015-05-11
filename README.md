@@ -32,11 +32,9 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 ### What is a Inline-Module
 A Inline-Module is a form of module that is ran all within one file hooked into the main system it is extending. Usually these forms of modules are included `include()` into a application that updates regularily, allowing your code to be seperate and easily modified/re-included.  
 
-For more  information visit parent module:
-<https://github.com/humhub/humhub-modules-custom-pages>
-
 ### Examples
 
 - [Example PHP Page Inline-Module HStats](docs/example-hstats.md)
 - [Example Widget "Welcome Back"](docs/widget-example-1.md)
 - *Submit your own Widget/PHP examples to `docs/` via pull requests, and help others learn!*
+
