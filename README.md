@@ -23,7 +23,7 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 - Simply drop the module as **custom_pages** into your `/protected/modules/` folder
 - Activate the module
 
-### Updating
+### Updating from Custom Pages or Previous Version
 
 You can update Custom Pages with Custom Pages Extended. To do so, follow these simple directions
 
