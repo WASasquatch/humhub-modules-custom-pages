@@ -38,3 +38,6 @@ A Inline-Module is a form of module that is ran all within one file hooked into 
 - [Example Widget "Welcome Back"](docs/widget-example-1.md)
 - *Submit your own Widget/PHP examples to `docs/` via pull requests, and help others learn!*
 
+
+For more  information visit parent module:
+<https://github.com/humhub/humhub-modules-custom-pages>
