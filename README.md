@@ -12,9 +12,10 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 
 - **Widgets** - Create widgets on various pages that allow endless possiblies!
 - **PHP** Pages for [Inline-Module](#php-page--widget-usage) Creation!
-- **Active User Model & Space** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
-- Create Unlisted Pages
-- Set link target *(Currently broken)*
+- **Active User Model** data passed for Inline-Module creation.
+- **Active Space Model** data passed to Space Widgets for Inline-Module creation
+- Set link target for external/internal links.
+- Set unlisted pages which will not appear on menus
 - **More Soon** ...
 
 ### Installation
