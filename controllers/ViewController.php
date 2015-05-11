@@ -64,7 +64,7 @@ class ViewController extends Controller
             throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Access denied!'));
         }
 		
-		if ($page->attributes['visibility'] == 0 && Yii::app()->user->isGuest) {
+		if ($page->visibility == CustomPage::VISIBILITY_MEMBER && Yii::app()->user->isGuest) {
 			throw new CHttpException(403, Yii::t('CustomPagesModule.views_Error', 'Registered users only!'));
 		}
 
