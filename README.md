@@ -26,6 +26,7 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 ### PHP Page / Widget Usage
 
 - The PHP pages run off the eval() functioning, meaning all supplied input needs to be already in PHP Mode. Do not start, or end with `<?php ... ?>`, instead write as if already in PHP Mode. 
+- One of the most important things to remember is you are writing PHP in the confined of Yii and HumHub and must write within those standards. 
 - You can use the object var `$user` to access user information such as the user display name `$user->displayName`
 - When using Widget Type **Space (Sidebar Widget)** you can access the space information with the `$space` variable. For example to access the space name you would use `$space->name`
 
