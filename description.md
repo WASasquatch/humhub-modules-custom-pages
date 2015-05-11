@@ -4,8 +4,10 @@ Within the Custom Pages module, administrators can quickly and easily add additi
 -
 - Add menu entries to the top navigation or account menu
 - Create new pages with your own content (HTML, PHP or Markdown)
+- Create widgets with PHP content for endless possiblities!
 - Integrate iFrames to display external content
-- Add simple outgoing links
+- Add links with customizable targets
+- Add unlisted pages (hidden from menus)
 
 
 **Source Code:**    
