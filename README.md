@@ -23,6 +23,16 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 - Simply drop the module as **custom_pages** into your `/protected/modules/` folder
 - Activate the module
 
+### Updating
+
+You can update Custom Pages with Custom Pages Extended. To do so, follow these simple directions
+
+- Overwrite the `modules/custom_pages/` with the new source code
+- Disable the module from Admin Control center
+- Enable the module to migrate the database
+
+Alternatively you can update with **YIIC** with the following command: `path/to/php yiic migrate --migrationPath=custom_pages.migrations`
+
 ### PHP Page / Widget Usage
 
 - The PHP pages run off the eval() functioning, meaning all supplied input needs to be already in PHP Mode. Do not start, or end with `<?php ... ?>`, instead write as if already in PHP Mode. 
