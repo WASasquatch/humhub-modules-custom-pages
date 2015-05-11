@@ -10,7 +10,7 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 
 ### New Features in Extended Version
 
-- **Widgets** Create widgets with inline-modules!
+- **Widgets** on various pages allow endless possiblies!
 - **PHP** Pages for Inline-Module Creation!
 - **Active User Model** data passed for Inline-Module creation, or other software, such as use for chat nicknames.
 - Create Unlisted Pages
