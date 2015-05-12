@@ -78,6 +78,11 @@ class AdminController extends Controller
         Yii::app()->clientScript->registerScriptFile($this->getModule()->getAssetsUrl() . '/bootstrap-select.min.js');
 
         if (isset($_POST['CustomPage'])) {
+
+            if($_POST['CustomPage']['type'] == CustomPage::TYPE_MARKDOWN) {
+                $_POST['CustomPage']['content'] = $_POST['CustomPage']['markdown'];
+            }
+            
             $page->attributes = $_POST['CustomPage'];
 
             if ($page->validate()) {
