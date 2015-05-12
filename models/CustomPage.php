@@ -120,9 +120,6 @@ class CustomPage extends HActiveRecord
         if ($this->type == self::TYPE_IFRAME || $this->type == self::TYPE_LINK) {
             $this->content = $this->url;
         }
-        if ($this->type == self::TYPE_MARKDOWN) {
-            $this->content = $this->markdown;
-        }
         if ($this->type == self::TYPE_WIDGET) {
             $this->navigation_class = 'null';
         } else {
