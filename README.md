@@ -7,6 +7,7 @@ Allows admins to add custom pages (html, **php**, or markdown), widgets (php), i
 - __Module website:__ <https://github.com/WASasquatch/humhub-modules-custom-pages-extended/>
 - __Author:__ Jordan Thompson, Luke
 - __Author website:__ [Jordan Thompson @ HumHub](http://community.humhub.org)
+- __Releases:__ <https://github.com/WASasquatch/humhub-modules-custom-pages-extended/releases>
 
 ### New Features in Extended Version
 
