@@ -30,10 +30,10 @@ class CustomStackWidget extends HWidget {
     }
     
     public function run() {
-        if(Yii::app()->user->isGuest && !$this->visibility) {
+        if(Yii::app()->user->isGuest && $this->visibility == CustomPage::VISIBILITY_MEMBER) {
             continue;
         }
-        if ($this->targets) {
+        if ($this->targets || isset(Yii::app()->request->getParam('sguid'))) {
             if (Yii::app()->request->getParam('sguid') != null && @in_array(Yii::app()->request->getParam('sguid'), $this->targets) || Yii::app()->request->getParam('sguid') == $this->targets) {
                 if ((int)$this->notemplate == 1) {
                     $this->render('blankWidget', array(
