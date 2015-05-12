@@ -27,10 +27,8 @@ class CustomStackWidget extends HWidget {
         if (!isset($this->notemplate)) {
             $this->notemplate = 0;
         }
-        if (Yii::app()->request->getParam('sguid') != '' && $this->space = Space::model()->findByPk(Yii::app()->request->getParam('sguid'))) {
-            if ($this->space->id != '') {
-                $this->space = false;
-            }
+        if (Yii::app()->request->getParam('sguid') != '' && ($this->space = Space::model()->findByPk(Yii::app()->request->getParam('sguid'))) == null) {
+            $this->space = false;
         }
         return parent::__construct();
     }
