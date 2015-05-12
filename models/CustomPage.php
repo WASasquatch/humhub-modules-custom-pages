@@ -31,6 +31,7 @@ class CustomPage extends HActiveRecord
     const WIDGET_DASHBOARD = 'DashboardSidebarWidget';
     const WIDGET_DIRECTORY = 'DirectorySidebarWidget';
     const WIDGET_SPACE = 'SpaceSidebarWidget';
+    const WIDGET_PROFILE = 'ProfileSidebarWidget';
     // Page Types
     const TYPE_LINK = '1';
     const TYPE_HTML = '2';
@@ -168,7 +169,8 @@ class CustomPage extends HActiveRecord
         return array(
             self::WIDGET_DASHBOARD => Yii::t('CustomPagesModule.base', 'Dashboard (Sidebar Widget)'),
             self::WIDGET_DIRECTORY => Yii::t('CustomPagesModule.base', 'Directory (Sidebar Widget)'),
-            self::WIDGET_SPACE => Yii::t('CustomPagesModule.base', 'Space (Sidebar Widget)')
+            self::WIDGET_SPACE => Yii::t('CustomPagesModule.base', 'Space (Sidebar Widget)'),
+            self::WIDGET_PROFILE => Yii::t('CustomPagesModule.base', 'Profile (Sidebar Widget)')
         );
     }
 
