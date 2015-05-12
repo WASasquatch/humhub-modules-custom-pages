@@ -36,11 +36,32 @@ class CustomStackWidget extends HWidget {
     }
     
     public function run() {
-        if(Yii::app()->user->isGuest && $this->visibility == CustomPage::VISIBILITY_MEMBER) {
-            continue;
-        }
-        if ($this->targets && $this->space) {
-            if (@in_array($this->space->guid, $this->targets) || $this->space->guid == $this->targets) {
+        if(Yii::app()->user->isGuest && $this->visibility != CustomPage::VISIBILITY_MEMBER) {
+            if ($this->targets && $this->space) {
+                if (@in_array($this->space->guid, $this->targets) || $this->space->guid == $this->targets) {
+                    if ((int)$this->notemplate == 1) {
+                        $this->render('blankWidget', array(
+                            'id' => $this->id,
+                            'title' => $this->title,
+                            'content' => $this->content,
+                            'icon' => $this->icon,
+                            'user' => Yii::app()->user,
+                            'targets' => $this->targets,
+                            'space' => $this->space,
+                        ));
+                    } else {
+                        $this->render('genericWidget', array(
+                            'id' => $this->id,
+                            'title' => $this->title,
+                            'content' => $this->content,
+                            'icon' => $this->icon,
+                            'user' => Yii::app()->user,
+                            'targets' => $this->targets,
+                            'space' => $this->space,
+                        ));
+                    }
+                }
+            } else {
                 if ((int)$this->notemplate == 1) {
                     $this->render('blankWidget', array(
                         'id' => $this->id,
@@ -48,7 +69,6 @@ class CustomStackWidget extends HWidget {
                         'content' => $this->content,
                         'icon' => $this->icon,
                         'user' => Yii::app()->user,
-                        'targets' => $this->targets,
                         'space' => $this->space,
                     ));
                 } else {
@@ -58,30 +78,9 @@ class CustomStackWidget extends HWidget {
                         'content' => $this->content,
                         'icon' => $this->icon,
                         'user' => Yii::app()->user,
-                        'targets' => $this->targets,
                         'space' => $this->space,
                     ));
                 }
-            }
-        } else {
-            if ((int)$this->notemplate == 1) {
-                $this->render('blankWidget', array(
-                    'id' => $this->id,
-                    'title' => $this->title,
-                    'content' => $this->content,
-                    'icon' => $this->icon,
-                    'user' => Yii::app()->user,
-                    'space' => $this->space,
-                ));
-            } else {
-                $this->render('genericWidget', array(
-                    'id' => $this->id,
-                    'title' => $this->title,
-                    'content' => $this->content,
-                    'icon' => $this->icon,
-                    'user' => Yii::app()->user,
-                    'space' => $this->space,
-                ));
             }
         }
     }   
