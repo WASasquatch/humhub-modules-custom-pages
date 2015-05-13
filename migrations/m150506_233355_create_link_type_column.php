@@ -4,7 +4,7 @@ class m150506_233355_create_link_type_column extends EDbMigration
 {
 	public function up()
 	{
-		$this->addColumn('link_type', 'varchar(5) DEFAUL null');
+		$this->addColumn('custom_pages_page', 'link_type', 'varchar(5) DEFAUL null');
 	}
 
 	public function down()
