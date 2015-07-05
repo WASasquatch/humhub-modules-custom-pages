@@ -190,10 +190,10 @@ class CustomPage extends HActiveRecord
     {
     	$arr = array();
         if (HSetting::Get('allowGuestAccess', 'authentication_internal')) {
-            $arr[] = self::VISIBILITY_GUEST => Yii::t('CustomPagesModule.base', 'Guest (Everyone)');
+            $arr[self::VISIBILITY_GUEST] = Yii::t('CustomPagesModule.base', 'Guest (Everyone)');
         }
-        $arr[] = self::VISIBILITY_MEMBER => Yii::t('CustomPagesModule.base', 'Members (Members only)');
-        $arr[] = self::VISIBILITY_UNLISTED => Yii::t('CustomPagesModule.base', 'Unlisted (No menu links)');
+        $arr[self::VISIBILITY_MEMBER] = Yii::t('CustomPagesModule.base', 'Members (Members only)');
+        $arr[self::VISIBILITY_UNLISTED] = Yii::t('CustomPagesModule.base', 'Unlisted (No menu links)');
         return $arr;
     }
 
