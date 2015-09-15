@@ -1,3 +1,5 @@
+#This software is obsolete. 
+
 Custom Pages Extended
 ============
 
