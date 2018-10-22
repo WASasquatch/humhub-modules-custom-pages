@@ -5,7 +5,7 @@
 
 This example shows how you can create a class and utilize it to create inline-modules. This example outputs basic HumHub Statistics.
 
-<img src="http://i.imgur.com/hKwjATO.png" ?>
+[[http://i.imgur.com/hKwjATO.png|alt=HStats]]
 
 ```php
 /* *
